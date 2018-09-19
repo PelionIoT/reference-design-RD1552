@@ -8,7 +8,7 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
 
 # Pre-requisites:
 1. Hardware:
-    * RD1168 based board or platform (the application was developed and tested using the Example Implemenation Hardware - MCB/MTB
+    * RD1552 based board or platform (the application was developed and tested using the Example Implemenation Hardware - MCB/MTB
     * A micro USB cable
     * A WiFi access point
 
@@ -37,21 +37,23 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
 5. To build the bootloader to use the SD card: TIP: You may want to use atleast a Class 10, 2GB SD card.
     * Import the bootloader repo - https://github.com/ARMmbed/mbed-bootloader
     * Change main.cpp with:
-    ```
-#if MBED_CLOUD_CLIENT_UPDATE_STORAGE == ARM_UCP_FLASHIAP_BLOCKDEVICE
-#include "SDBlockDevice.h"  
-/* initialise sd card blockdevice */  
-#if defined(MBED_CONF_APP_SPI_MOSI) && defined(MBED_CONF_APP_SPI_MISO) && \  
-defined(MBED_CONF_APP_SPI_CLK)  && defined(MBED_CONF_APP_SPI_CS)  
-SDBlockDevice sd(MBED_CONF_APP_SPI_MOSI, MBED_CONF_APP_SPI_MISO,  
-MBED_CONF_APP_SPI_CLK,  MBED_CONF_APP_SPI_CS);  
-```
+	
+	```
+	#if MBED_CLOUD_CLIENT_UPDATE_STORAGE == ARM_UCP_FLASHIAP_BLOCKDEVICE
+	#include "SDBlockDevice.h"  
+	/* initialise sd card blockdevice */  
+	#if defined(MBED_CONF_APP_SPI_MOSI) && defined(MBED_CONF_APP_SPI_MISO) && \  
+	defined(MBED_CONF_APP_SPI_CLK)  && defined(MBED_CONF_APP_SPI_CS)  
+	SDBlockDevice sd(MBED_CONF_APP_SPI_MOSI, MBED_CONF_APP_SPI_MISO,  
+	MBED_CONF_APP_SPI_CLK,  MBED_CONF_APP_SPI_CS);  
+	```
 
-    * Modify mbed_app.json in bootloader: Change update storage-address and remove SPI pin defines.  
+* Modify mbed_app.json in bootloader: Change update storage-address and remove SPI pin defines.  
     
     ```
     "update-client.storage-address"  : "(1024*1024*64)", 
 	```
+	
 	And
 
 	```
