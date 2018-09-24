@@ -158,8 +158,6 @@ where payload name is the full path to your new binary built from step 13 and de
 The success logs should look like this on a serial terminal, although your device *will* be assigned a different device ID and will have a different IP address.
 
 ```
-tegrity check:
-[ERR ] Active firmware inte¦
 BOOT] Active firmware integrity check:
 [BOOT] [++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++]
 [BOOT] SHA256: BA2A6CC9182829733B56D41DD068021EBBFCC5602EEFB287BFA941079A8E47B7
