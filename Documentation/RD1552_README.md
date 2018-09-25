@@ -20,9 +20,9 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
 
 # Getting started:
 1. Import this example to your local machine with mbed CLI:
-    ``` mbed import https://github.com/ARMmbed/reference-designs.git ```
+    ``` mbed import https://github.com/ARMmbed/reference-design-RD1552.git ```
 
-2. Move into the imported directory ``` cd <path to directory>```
+2. Move into the imported directory ``` cd reference-design-RD1552```. Run the command ``` mbed deploy ``` to download the sources and add them to your current directory.
     * Login to your Pelion Cloud account on a browser & follow the steps below:
         * Navigate to Device identity > Certificates
         * Select the certificate created by your account admin and click on "Download Developer C file"
