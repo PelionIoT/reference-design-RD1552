@@ -32,9 +32,9 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
     * In the mbed_app.json file in the root of the application, modify the WiFi SSID and password for your network.
     * Save the changes.
 
-4. The supplied Bootloader in ../tools/ is currently built to use SPI Flash. If you are using the SPI Flash to store the certificates, then you are good to go. If you prefer to use the SD card for the storage, follow the steps below. If not, you may skip these from step 5 and continue from step 12.
+4. The supplied Bootloader in ../tools/ is currently built to use SPI Flash. If you are using the SPI Flash to store the certificates, then you are good to go. If you prefer to use the SD card for the storage, follow the steps below. If not, you may skip these from step 5 and continue from step 11.
    
-5. To build the bootloader to use the SD card: TIP: You may want to use atleast a Class 10, 2GB SD card.
+5. To build the bootloader to use the SD card: (TIP: You may want to use atleast a Class 10, 2GB SD card.) This application currently uses v3.3.0 of the mbed-bootloader.
     * Import the bootloader repo - https://github.com/ARMmbed/mbed-bootloader
     * Change main.cpp with:
 	
@@ -71,7 +71,7 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
         },
    ```
 6. Change mbed_app.json in source:
- ```   "update-client.storage-address"  : "(1024*1024*64)",  ```
+ ```   "update-client.storage-address"  : "(1024*1024*64)",```
    
 7. Once changes are made in bootloader, build it:
 ``` mbed compile -t GCC_ARM -m MTB_UBLOX_ODIN_W2 ```
@@ -79,15 +79,15 @@ Note: references to Mbed Cloud and Pelion Device Managament are interchangeable.
 8. Copy the generated binary to ../tools/ directory. Rename to match the existing file name.
 
 9. Change mbed_app.json in the root of the reference application i.e. 
-"update-client.storage-address"  : "(1024*1024*64)"
+``` "update-client.storage-address"  : "(1024*1024*64)", ```
 
-10. Change main.cpp in source to match SD card
+10. Change main.cpp in source to match SD card - i.e. un-comment the respective header include files in main.cpp to include the SD card specific headers while commenting out / removing the ones related to the SPI Flash (SPIFBlockDevice.h and LittleFileSystem.h).
 ### IMPORTANT: The required lines are already supplied in the code. Uncomment appropriate lines in main.cpp and build the binary.
 
 11. Combine with the bootloader using the supplied script in ../tools/ .
 ``` $> python tools/combine_bootloader_with_app.py -m MTB_UBLOX_ODIN_W2  -a BUILD/MTB_UBLOX_ODIN_W2/GCC_ARM/mbed-cloud-example.bin -o combined.bin ```
 
-12. Flash the combined binary (combined.bin) to your device. Open a terminal & observe the output.
+12. Flash the combined binary (combined.bin) to your device. Open a serial terminal at 115200, 8-N-1 & observe the output.
 
 13. The device starts the example, connects to the WiFi network & after a few moments connects & registers to Pelion Cloud. It then prints out a device ID. You will need this for firmware update at a later stage.
 
@@ -122,9 +122,9 @@ Increase stack size:         "MBED_CONF_APP_MAIN_STACK_SIZE=5000", to 6K if usin
 
 Where mbed cloud API URL is https://api.us-east-1.mbedcloud.com/  . The domain name must have a ".com" as a mandatory requirement and the model ID can be an integer of your choice.
 
-Note the use of --force as this option overrides the defaults provided in the application. This is a mandatory parameter.
+### Note the use of --force as this option overrides the defaults provided in the application. This is a mandatory parameter.
 
-5. With the certificates initialized, there will now be a ".certificates" directory created within the application's root directory.
+5. With the certificates initialized, there will now be a ".update-certificates" directory created within the application's root directory.
 
 6. Now, compile the application:
 ``` mbed compile -t GCC_ARM -m MTB_UBLOX_ODIN_W2 ```
