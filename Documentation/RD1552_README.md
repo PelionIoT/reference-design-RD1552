@@ -149,7 +149,7 @@ Where mbed cloud API URL is https://api.us-east-1.mbedcloud.com/  . The domain n
 
 ``` manifest-tool update device -p <payload name> -D <device id> ``` 
 
-where payload name is the full path to your new binary built from step 13 and device ID is the one obtained from step 9.
+where payload name is the full path to your new binary built from step 13 and device ID is the one obtained from step 10.
 
 15. You will notice from the serial terminal that the device gets a request to update the FW, then this is authorized, then the download of the new FW starts, finishes and the bootloader verifies the authencity of the new FW, installs it on the device and reboots.
 
