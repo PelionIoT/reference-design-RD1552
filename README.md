@@ -23,5 +23,5 @@ Please refer to the [\Documentation\RD1552_Readme.md](https://github.com/ARMmbed
 		
 | Release | mbed OS | mbed Cloud Client | Release Date | Comment |
 | --- | --- | --- | --- | --- | 
-|v1.0 | 5.9.6	| 1.3.3	| 19/09/2018 | Initial Release
+|v1.0 | 5.9.6	| 1.3.3	| 27/09/2018 | Initial Release
 | |  |  |   | 
