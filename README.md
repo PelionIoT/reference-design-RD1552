@@ -25,3 +25,5 @@ Please refer to the [\Documentation\RD1552_Readme.md](https://github.com/ARMmbed
 | --- | --- | --- | --- | --- | 
 |v1.0 | 5.9.6	| 1.3.3	| 27/09/2018 | Initial Release
 | |  |  |   | 
+
+Back to [Reference Designs](https://github.com/ARMmbed/reference-designs)
